@@ -36,25 +36,25 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import mean_absolute_error , mean_squared_error
 df=pd.read_csv('student_scores.csv')
 df.head()
+```
 
-
-python
+```python
 df.tail()
-
+```
 
 ```python
 X= df.iloc[:,:-1].values
 X
-
+```
 ```python
 Y = df.iloc[:,1].values
 Y
-
+```
 
 ```python
 from sklearn.model_selection import train_test_split
 X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size=1/3,random_state=0)
-
+```
 
 ```python
 from sklearn.linear_model import LinearRegression
@@ -62,7 +62,7 @@ regressor=LinearRegression()
 regressor.fit(X_train,Y_train)
 Y_pred=regressor.predict(X_test)
 Y_pred
-
+```
 
 ```python
 plt.scatter(X_train,Y_train,color="red")
@@ -80,6 +80,7 @@ plt.title("Hours vs scores (test set)")
 plt.xlabel("Hours")
 plt.ylabel("scores")
 plt.show()
+```
 
 ```python
 mse=mean_squared_error(Y_test,Y_pred)
