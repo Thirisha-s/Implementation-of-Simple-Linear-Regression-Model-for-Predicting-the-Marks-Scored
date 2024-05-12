@@ -8,121 +8,81 @@ To write a program to predict the marks scored by a student using the simple lin
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-
-1.Import the standard Libraries.
-
-2.Set variables for assigning dataset values.
-
-3.Import linear regression from sklearn.
-
-4.Assign the points for representing in the graph.
-
-5.Predict the regression for marks by using the representation of the graph.
-
-6.Compare the graphs and hence we obtained the linear regression for the given datas.
+1. Import the required libraries and read the dataframe.
+2. Assign hours to X and scores to Y.
+3. Implement training set and test set of the dataframe.
+4. Plot the required graph both for test data and training data and Find the values of MSE , MAE and RMSE.
 
 ## Program:
-
-```python
-Program to implement the simple linear regression model for predicting the marks scored.
-
-Developed by:    THIRISHA .S
-RegisterNumber:  212222230160
 ```
-
-```python
+/*
+Program to implement the simple linear regression model for predicting the marks scored.
+Developed by: S.THIRISHA.S
+RegisterNumber:  212222230160
+*/
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.metrics import mean_absolute_error , mean_squared_error
 df=pd.read_csv('student_scores.csv')
+#displaying the content in datafile
 df.head()
-```
-
-```python
 df.tail()
-```
-
-```python
-X= df.iloc[:,:-1].values
+#segregation data to variables
+X=df.iloc[:,:-1].values
 X
-```
-
-```python
-Y = df.iloc[:,1].values
+Y=df.iloc[:,1].values
 Y
-```
-
-```python
+#spliting train and test data
 from sklearn.model_selection import train_test_split
-X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size=1/3,random_state=0)
-```
-
-```python
+X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=1/3,random_state=0)
 from sklearn.linear_model import LinearRegression
 regressor=LinearRegression()
 regressor.fit(X_train,Y_train)
 Y_pred=regressor.predict(X_test)
+#displaying predicted value
 Y_pred
-```
-
-```python
-plt.scatter(X_train,Y_train,color="red")
-plt.plot(X_train,regressor.predict(X_train),color="black")
-plt.title("Hours vs Scores (Training Set)")
+#displaying actual value
+Y_test
+#graph plot for training data
+plt.scatter(X_train,Y_train,color="orange")
+plt.plot(X_train,regressor.predict(X_train),color="red")
+plt.title("Hours vs Scores(Training Set)")
 plt.xlabel("Hours")
 plt.ylabel("Scores")
 plt.show()
-```
 
-```python
+#graph plot for test data
 plt.scatter(X_test,Y_test,color="purple")
-plt.plot(X_test,regressor.predict(X_test),color="yellow")
-plt.title("Hours vs scores (test set)")
+plt.plot(X_train,regressor.predict(X_train),color="yellow")
+plt.title("Hours vs Scores(Test Set)")
 plt.xlabel("Hours")
-plt.ylabel("scores")
+plt.ylabel("Scores")
 plt.show()
-```
-
-```python
+from sklearn.metrics import mean_absolute_error,mean_squared_error
 mse=mean_squared_error(Y_test,Y_pred)
-print('MSE = ',mse)
+print('MSC=',mse)
+
 mae=mean_absolute_error(Y_test,Y_pred)
-print('MAE = ',mae)
+print('MAE=',mae)
+
 rmse=np.sqrt(mse)
-print('RMSE = ',rmse)
+print("RMSE=",rmse)
 ```
 
 ## Output:
+![image](https://github.com/Harish2404lll/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141472096/82c171fd-a331-4bc4-83b4-beb5893e0239)
 
-#### Head Values
-![image](https://github.com/Leann4468/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/121165979/da3a72b5-ca2e-4e21-b29c-8b7a4760b339)
+![image](https://github.com/Harish2404lll/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141472096/71bb664f-a76a-4419-9ea4-887dd625268d)
 
+![image](https://github.com/Harish2404lll/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141472096/832c21f5-6c17-4971-805d-09f634788907)
 
-#### Tail Values
-![image](https://github.com/Leann4468/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/121165979/bce0af5b-b551-48e7-8855-bfe729b73426)
+![image](https://github.com/Harish2404lll/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141472096/4e91b9b3-adce-4621-8ac1-c06e9c133504)
 
+![image](https://github.com/Harish2404lll/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141472096/c9b33cd6-15e7-45c6-8e76-5e5e7854178c)
 
-#### X and Y values
-![image](https://github.com/Leann4468/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/121165979/61bd07bb-344b-4942-928d-919ee370c373)
+![image](https://github.com/Harish2404lll/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141472096/6acfcd29-e767-489f-b539-0ef499dddbef)
 
-![image](https://github.com/Leann4468/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/121165979/d3852f8a-adb0-41c6-96fb-b23940a9c13f)
-
-####  Prediction Values
-![image](https://github.com/Leann4468/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/121165979/d0680239-c010-4022-8a5b-263237e8362c)
-
-
-#### MSE,MAE and RMSE
-![image](https://github.com/Leann4468/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/121165979/c045d1e1-edb1-471e-a6eb-1b99568c9fdc)
-
-
-#### Training Set
-![image](https://github.com/Leann4468/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/121165979/003fafd5-5230-4268-9f42-8777dbf6181f)
-
-
-#### Testing Set
-![image](https://github.com/Leann4468/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/121165979/54dc3f5e-a157-4740-ad2e-b36bf9591282)
-
+![image](https://github.com/Harish2404lll/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/141472096/55673e75-0b52-4451-84b4-58dfce721b6b)
 
 ## Result:
 Thus the program to implement the simple linear regression model for predicting the marks scored is written and verified using python programming.
