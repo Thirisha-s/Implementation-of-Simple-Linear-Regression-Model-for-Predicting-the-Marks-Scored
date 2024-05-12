@@ -14,12 +14,11 @@ To write a program to predict the marks scored by a student using the simple lin
 4. Plot the required graph both for test data and training data and Find the values of MSE , MAE and RMSE.
 
 ## Program:
-```
-/*python
+```python
 Program to implement the simple linear regression model for predicting the marks scored.
 Developed by: S.THIRISHA.S
 RegisterNumber:  212222230160
-*/
+```
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -50,7 +49,7 @@ plt.title("Hours vs Scores(Training Set)")
 plt.xlabel("Hours")
 plt.ylabel("Scores")
 plt.show()
-
+```
 #graph plot for test data
 plt.scatter(X_test,Y_test,color="purple")
 plt.plot(X_train,regressor.predict(X_train),color="yellow")
